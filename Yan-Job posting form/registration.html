@@ -6,47 +6,58 @@
     <link rel="stylesheet" type="text/css" href="common.css" />
   </head>
   <body>
-    <h1>Membership Form</h1>
+    <h1>Job Posting Form</h1>
 
-    <p>Thanks for choosing to join The Widget Club. To register, please fill in your details below and click Send Details.</p>
+    <p>Thanks for choosing to join whiteboard. To post a job, please fill in your details below and click Send Details.</p>
 
     <form action="process_registration.php" method="post">
-      <div style="width: 30em;">
+      <div style="width: 30em;padding-bottom: 100px">
 
-        <label for="firstName">First name</label>
-        <input type="text" name="firstName" id="firstName" value="" />
+        
 
-        <label for="lastName">Last name</label>
-        <input type="text" name="lastName" id="lastName" value="" />
+        
+        
+        <label for="jobTitle">Job Title</label>
+        <input type="text" name="jobTitle" id="jobTitle" value="" />
+        
+        <label for="jobType">Job type</label>
+        <input type="text" name="jobType" id="jobType" value="" />
+        
+         <label for="location">Location</label>
+        <input type="text" name="location" id="location" value="" />
+        
+        <label for="companyName">Company Name</label>
+        <input type="text" name="companyName" id="companyName" value="" />
+        
+        <label for="companyDescription">Company Description</label>
+        <textarea name="companyDescription" id="companyDescription" rows="4" cols="50"> </textarea>
+        
+        <label for="jobDescription">Job Description</label>
+        <textarea name="jobDescription" id="jobDescription" rows="4" cols="50"> </textarea>
+        
+        <label for="skills">Skills Required</label>
+        <textarea name="skills" id="skills" rows="4" cols="50"> </textarea>
+        
+       
+        <label for="postingDate">Posting Date</label>
+        <input type="text" name="postingDate" id="postingDate" value="" />
+        
+        <label for="contactPerson">Contact Person</label>
+        <input type="text" name="contactPerson" id="contactPerson" value="" />
 
-        <label for="password1">Choose a password</label>
-        <input type="password" name="password1" id="password1" value="" />
-        <label for="password2">Retype password</label>
-        <input type="password" name="password2" id="password2" value="" />
+        <label for="email">E-mail</label>
+        <input type="text" name="email" id="email" value="" />
 
-        <label for="genderMale">Are you male...</label>
-        <input type="radio" name="gender" id="genderMale" value="M" />
-        <label for="genderFemale">...or female?</label>
-        <input type="radio" name="gender" id="genderFemale" value="F" />
-
-        <label for="favoriteWidget">What's your favorite widget?</label>
-        <select name="favoriteWidget" id="favoriteWidget" size="1">
-          <option value="superWidget">The SuperWidget</option>
-          <option value="megaWidget">The MegaWidget</option>
-          <option value="wonderWidget">The WonderWidget</option>
-        </select>
-
-        <label for="newsletter">Do you want to receive our newsletter?</label>
-        <input type="checkbox" name="newsletter" id="newsletter" value="yes" />
-
-        <label for="comments">Any comments?</label>
-        <textarea name="comments" id="comments" rows="4" cols="50"> </textarea>
+       
 
         <div style="clear: both;">
           <input type="submit" name="submitButton" id="submitButton" value="Send Details" />
           <input type="reset" name="resetButton" id="resetButton" value="Reset Form" style="margin-right: 20px;" />
+          
         </div>
+        
       </div>
+      
     </form>
 
   </body>
