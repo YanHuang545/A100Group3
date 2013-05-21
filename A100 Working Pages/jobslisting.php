@@ -14,51 +14,47 @@
 
 	
     <?php
-	
-    $con=mysqli_connect("127.0.0.1", "root", "a100", "mydb"); //This my locally hosted database for testing purposes
+    
+    $dsn = "mysql:dbname=jobs";
+    $username = "root";
+    $password = "a100";
 
+    try {
+        $conn = new PDO($dsn, $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO:ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+      echo "Connection failed: " . $e->getMessage();
+    }
 
-    if (mysqli_connect_errno($con))
-   {
-   echo "Failed to connect to MySQL: " . mysqli_connect_error();
-   }
-   else{
-   
-   $result = mysqli_query($con,"SELECT * FROM Jobs");
+    $sql = "SELECT * FROM Jobs";
+    echo "<table border='1' cellspacing='0' cellpadding = '6' >
+    <tr>
+    <th>Job Title</th>
+    <th>Job Type</th>
+    <th>Location</th>
+    <th>Company Description</th>
+    <th>Job Description</th>
+    <th></th>
+    </tr>";
 
-   echo "<table border='1' cellspacing='0' cellpadding = '6' >
-   <tr>
-   <th>Job Title</th>
-   <th>Job Type</th>
-   <th>Location</th>
-   <th>Company Description</th>
-   <th>Job Description</th>
-   <th></th>
-   </tr>";
-   
-   
-   while($row = mysqli_fetch_array($result)){
+    try {
+      $rows = $conn->query($sql);
+      foreach($rows as $row) {
 
-   echo "<tr>";
-   echo "<td>" . $row['title'] . "</td>";
-   echo "<td>" . $row['type'] . "</td>";
-   echo "<td>" . $row['location'] . "</td>";
-   echo "<td>" . $row['company_description'] . "</td>";
-   echo "<td>" . $row['job_description'] . "</td>";
-   echo "<td><a href='apply.html'>Apply!</a></td>";
-   echo "</tr>";
-   
-   }
-   
-   echo "</table>";
-   
-   mysqli_close($con);
-
-
- }
-	
-	?>
-
-
+        echo "<tr>";
+        "<td>" . $row['title'] . "</td>
+        <td>" . $row['type'] . "</td>
+        <td>" . $row['location'] . "</td>
+        <td>" . $row['company_description'] . "</td>
+        <td>" . $row['job_description'] . "</td>
+        <td><a href='apply.html'>Apply!</a></td>
+        </tr>";
+      }
+    } catch (PDOException $e) {
+      echo "Query failed: " . $e->getMessage();
+    }
+    echo "</table>";
+    $conn = null;
+	  ?>
   </body>
 </html>
