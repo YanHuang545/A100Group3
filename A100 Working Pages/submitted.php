@@ -23,7 +23,7 @@ try {
 }
 
 $sql = "SELECT * FROM applications";
-echo "<table border='1' cellspacing='0' cellpadding='4'> 
+echo "<table border='1' cellspacing='0' cellpadding='6'> 
         <thead>
           <tr>
             <th>ID</th>
@@ -57,6 +57,7 @@ echo "</tbody></table>";
 $conn = null;
 ?>
 
+    <br><a href="index.html">Go back</a>
   </body>
 </html>
 
