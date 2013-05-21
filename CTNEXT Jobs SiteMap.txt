@@ -1,0 +1,15 @@
+CTNEXT/NEWhiteboard Jobs Site Map
+
+First Page: Links for Prospective Employees and Employers, link to login page in top right
+
+Prospective Employees(non-member): Create a Profile, Search Jobs
+Prospective Employees(member): Edit my Profile, My Applications(here the member can check
+the status of his submitted applications), Browse Jobs
+
+Employer(non-member): Create a Profile, Post a Job
+Employer(member): Edit Profile, My Job Postings(here they can edit/remove the jobs they have already posted,
+brose applicants and post a new job), Browse Talent Pool
+
+/*We've created most of the pages that this map links to*/
+
+/*This can be a standalone site or inside the whiteboard site*/
