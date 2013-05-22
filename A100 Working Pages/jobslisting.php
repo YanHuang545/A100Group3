@@ -21,7 +21,7 @@
 
     try {
         $conn = new PDO($dsn, $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO:ERRMODE_EXCEPTION);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
       echo "Connection failed: " . $e->getMessage();
     }
@@ -41,8 +41,8 @@
       $rows = $conn->query($sql);
       foreach($rows as $row) {
 
-        echo "<tr>";
-        "<td>" . $row['title'] . "</td>
+        echo "<tr>
+        <td>" . $row['title'] . "</td>
         <td>" . $row['type'] . "</td>
         <td>" . $row['location'] . "</td>
         <td>" . $row['company_description'] . "</td>
