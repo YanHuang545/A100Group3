@@ -26,5 +26,28 @@
       
     </dl>
 
+
+<!--Robert:PHP handing data input into database-->
+<?php
+require_once("config.php");
+$sql = "INSERT INTO jobs (title, type, location, company, company_description, job_description, skills, postingDate, contact_name, contact_email) VALUES (:title, :type, :location, :company, :company_description, :job_description, :skills, :date, :contact_name, :contact_email)";
+try {
+$st = $conn->prepare( $sql );
+$st->bindValue( ":title", $_POST["jobTitle"], PDO::PARAM_STR );
+$st->bindValue( ":type", $_POST["jobType"], PDO::PARAM_STR );
+$st->bindValue( ":location", $_POST["location"], PDO::PARAM_STR );
+$st->bindValue( ":company", $_POST["companyName"], PDO::PARAM_STR );
+$st->bindValue( ":company_description", $_POST["companyDescription"], PDO::PARAM_STR );
+$st->bindValue( ":job_description", $_POST["jobDescription"], PDO::PARAM_STR );
+$st->bindValue( ":skills", $_POST["skills"], PDO::PARAM_STR );
+$st->bindValue( ":date", $_POST["postingDate"], PDO::PARAM_STR );
+$st->bindValue( ":contact_name", $_POST["contactPerson"], PDO::PARAM_STR );
+$st->bindValue( ":contact_email", $_POST["email"], PDO::PARAM_STR );
+$st->execute();
+} catch ( PDOException $e ) {
+echo "Query failed: " . $e->getMessage();
+}
+?>
+
   </body>
 </html>

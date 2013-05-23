@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  
+<!--Rob: Alternate application submission form-->
+  <head>
+    <title>Application Form</title>
+    <link rel="stylesheet" type="text/css" href="common.css" />
+  </head>
+  <body>
+    <h1>Application Form</h1>
+
+    <p>Please submit your user information and resume here.</p>
+ 
+    <form action="apply.php" method="post">
+      <div style="width: 30em;">
+
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" />
+
+      <label for="phone">Phone</label>
+      <input type="text" name="phone" id="phone" />
+
+      <label for="resume">Resume</label>
+      <input type="file" name="resume" id="resume" />
+
+      <label for="letter">Cover Letter</label>
+      <input type="file" name="letter" id="letter" />
+      <input type="submit" name="submit" value="Submit" style="margin-right: 20px;" />
+      </form>
+
+  </body>
+</html>
