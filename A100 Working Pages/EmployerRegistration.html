@@ -12,19 +12,30 @@
     <body class="center">
 	
 	<h1>Employer Registration</h1>
-	<p>Please provide us with some basic information about your company.<p>
+	<p><strong>Please provide us with some basic information about your company.</strong><p>
 
-    <FORM method="post">
+    <FORM action="employerregistration.php" method="post">
      <TABLE class ="center">
       <TR>
        <TD><LABEL for="c_name">Company Name:</LABEL>
-       <TD><INPUT type="text" name="company_name" id="c_name">
+       <TD><INPUT type="text" name="company_name" id="company_name">
       <TR>
        <TD><LABEL for="c_loc">Location:</LABEL>
-       <TD><INPUT type="text" name="location" id="c_loc">
+       <TD><INPUT type="text" name="location" id="location">
 	  <TR> 
 	   <TD><LABEL for="c_desc">Company Description:</LABEL>
-       <TD><textarea id="c_desc" rows="10" cols="30"></textarea>
+       <TD><textarea name="company_desc" id="company_desc" rows="10" cols="30"></textarea>
+	  </Table>
+	  
+	  <p><strong>Please select login credentials:</strong></p>
+	  
+	  <Table class="center">
+      <TR>
+       <TD><LABEL for="c_name">User ID:</LABEL>
+       <TD><INPUT type="text" name="user_id" id="user_id">
+      <TR>
+       <TD><LABEL for="c_loc">Password:</LABEL>
+       <TD><INPUT type="password" name="pass" id="pass">
 	  <TR>
 	   <TD>
        <TD><input type="submit" name="submit" value="Submit" style="margin-right: 20px;" />  
