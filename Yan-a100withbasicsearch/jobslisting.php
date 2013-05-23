@@ -37,7 +37,7 @@
     <th>Location</th>
     <th>Company Description</th>
     <th>Job Description</th>
-    <th></th>
+    
     </tr>";
 
     try {
@@ -45,12 +45,12 @@
       foreach($rows as $row) {
 
         echo "<tr>
-        <td>" . $row['title'] . "</td>
+        <td><a href='viewjob.php?id=".$row['id']." '>" . $row['title'] . "</a></td>
         <td>" . $row['type'] . "</td>
         <td>" . $row['location'] . "</td>
         <td>" . $row['company_description'] . "</td>
         <td>" . $row['job_description'] . "</td>
-        <td><a href='apply.html'>Apply!</a></td>
+        
         </tr>";
       }
     } catch (PDOException $e) {
