@@ -14,19 +14,19 @@
 
 	
     <?php
+    require_once(dirname(__FILE__) . '\\config\\config.php');
     
-    $dsn = "mysql:dbname=jobs";
-    $username = "root";
-    $password = "a100";
-
     try {
-        $conn = new PDO($dsn, $username, $password);
+        $conn = new PDO($dsn, $db_user, $db_pass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
       echo "Connection failed: " . $e->getMessage();
     }
-
-    $sql = "SELECT * FROM Jobs";
+    
+	$title=$_POST["jobTitle"];
+	$location=$_POST["location"];
+	
+    $sql = "SELECT * FROM jobs where title like'%" . $title . "%' and location like'%" . $location . "%'";
     echo "<table border='1' cellspacing='0' cellpadding = '6' >
     <tr>
     <th>Job Title</th>
@@ -34,7 +34,7 @@
     <th>Location</th>
     <th>Company Description</th>
     <th>Job Description</th>
-    <th></th>
+    
     </tr>";
 
     try {
@@ -42,12 +42,12 @@
       foreach($rows as $row) {
 
         echo "<tr>
-        <td>" . $row['title'] . "</td>
+        <td><a href='viewjob.php?id=".$row['id']." '>" . $row['title'] . "</a></td>
         <td>" . $row['type'] . "</td>
         <td>" . $row['location'] . "</td>
         <td>" . $row['company_description'] . "</td>
         <td>" . $row['job_description'] . "</td>
-        <td><a href='apply.html'>Apply!</a></td>
+        
         </tr>";
       }
     } catch (PDOException $e) {

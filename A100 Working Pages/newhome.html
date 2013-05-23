@@ -58,6 +58,9 @@
 	<!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements and feature detects -->
 	<script src="js/modernizr-2.5.3-min.js"></script>
 
+  <!--PHP/MYSQL database configuration-->
+  <?php require_once('config/config.php'); ?>
+
 </head>
 
 <body>
@@ -67,58 +70,54 @@
 <div id="wrapper">
 	<div id="headcontainer">
 		<header>
-		<h1>The Grid</h1>
+		<h1><a id="title-href" href="newhome.html">The Grid</a></h1>
 		<h2>A Whiteboard Redesign</h2>
 		</header>
 	</div>
 	<div id="maincontentcontainer">
 		<div id="maincontent">
 
+      <div id="nav" class="section group">
+        <div class="col span_1_of_6">
+          <a href="sdfsdf">About</a>
+        </div>
+        <div class="col span_1_of_6">
+          <a href="">Community</a>
+        </div>
+        <div class="col span_1_of_6">
+          <a href="">Calendar</a>
+        </div>
+        <div class="col span_1_of_6">
+          <a href="">Experts</a>
+        </div>
+        <div id="search" class="col span_2_of_6">
+          <form method="post" action="search.php">
+          <input type="text" name="search" id="search" value="Search" style="color:silver">
+          </form>
+        </div>
+      </div>
 
-      <div class="section group">
+    	<div class="section group">
         <div id="desc" class="section group">
-          <div class="col span_4_of_10">
-            <h3>Jobs</h3>
+          <div class="col span_1_of_3">
+		  	    <h3>Recent Posts</h3>
           </div>
-          <div class="col span_4_of_10">
-            <h3>Posts</h3>
-          </div>
-          <div class="col span_2_of_10">
+          <div class="col span_2_of_3">
             <h3>Profiles</h3>
           </div>
         </div>
-      </div>
+			</div>
       <div class="section group">
 				<div class="col span_1_of_3">
-          <?php
-          require_once(dirname(__FILE__) . '\\config\\config.php');
-
-            $search_term=$_POST["search"];
-            $sql_jobs_search = "SELECT * FROM jobs WHERE title LIKE '%".$search_term."%' OR type LIKE '%".$search_term."%' OR location LIKE '%".$search_term."%' OR company LIKE '%".$search_term."%' OR skills LIKE '%".$search_term."%'";
-            try {
-              $rows = $conn->query($sql_jobs_search);
-              foreach($rows as $row) {
-                echo "<div id='jobs_container'>
-                        <div id='jobs_card'>
-                          <img id='post-image' src='images/default_user.png' width='150' height='150'/>
-                          <h3 class='post title'><a href='viewjob.php?id=" . $row["id"] . "'>" . $row["title"] . "</a></h3>
-                          <p>Posted" . date("F d Y", $row["post_date"]) . "</p>
-                          <p id='job-desc'>" . $row["job_descriptions"] . "</p>
-                        </div>
-                      </div>";
-              }
-            } catch (PDOException $e) {
-              echo "Query failed: " . $e->getMessage();
-            }
-            $conn = null;
-          ?>
+          <?php require_once("return-posts.php"); ?>
+        </div>
+        <div class="col span_2_of_3">
+          <?php require_once("return-users.php"); ?>
         </div>
       </div>
 
 
-
-
-</div>
+		</div>
 	</div>
 	<div id="footercontainer">
 		<footer class="group">
@@ -174,3 +173,4 @@
 
 </body>
 </html>
+

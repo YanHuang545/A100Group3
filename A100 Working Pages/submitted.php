@@ -11,16 +11,8 @@
     <h1>Applications</h1>
 
 <?php
-$dsn = "mysql:dbname=jobs";
-$username = "root";
-$password = "a100";
+require_once(dirname(__FILE__) . '\\config\\config.php');
 
-try {
-    $conn = new PDO($dsn, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
 
 $sql = "SELECT * FROM applications";
 echo "<table border='1' cellspacing='0' cellpadding='6'> 
