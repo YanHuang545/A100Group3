@@ -1,0 +1,47 @@
+/* Custom Stylesheet for various elements not already styled with
+ * ResponsiveGridSystem.
+ * Author: Robert Rotaru
+ */
+
+#post-image {
+  float:left; 
+  margin:1em; 
+}
+
+#blurb {
+  clear:both; 
+  padding: 0 0 0 1em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/*.face {
+  overflow: hidden;
+}*/
+
+#profile .face{
+  height: 88px;
+}
+
+#post_container {
+  border: 1px solid white; 
+}
+
+.post.content {
+  height: 83%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post.title {
+  margin: 0.5em 0.5em 0 0;
+  max-height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#maincontent .col {
+		background: #ccc;
+		background: rgba(245, 245, 245, 0.85);
+}

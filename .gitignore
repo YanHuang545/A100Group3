@@ -1,4 +1,13 @@
 #################
+## Custom
+#################
+
+# folder for config.php
+config/
+config.php
+
+
+#################
 ## Eclipse
 #################
 
