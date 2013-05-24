@@ -36,8 +36,11 @@ echo "connection succesful";
 echo "Connection failed: " . $e->getMessage();
 }
 
+
 $sql = "INSERT INTO Registered_Employers (company_name, location, company_desc, user_name, password)
 VALUES(:company_name,:location,:company_desc, :user_name, :password)";
+
+$hashedpassword = md5($_POST["pass"]); //This would eventually be changed to a more appropriate hashing algorithm and use salt
 
 try {
 $st = $conn->prepare( $sql );
@@ -45,7 +48,7 @@ $st->bindValue( ":company_name", $_POST["company_name"], PDO::PARAM_STR );
 $st->bindValue( ":location", $_POST["location"], PDO::PARAM_STR );
 $st->bindValue( ":company_desc", $_POST["company_desc"], PDO::PARAM_STR );
 $st->bindValue( ":user_name", $_POST["user_id"], PDO::PARAM_STR );
-$st->bindValue( ":password", $_POST["pass"], PDO::PARAM_STR );
+$st->bindValue( ":password", $hashedpassword, PDO::PARAM_STR );
 $st->execute();
 echo "query success";
 } catch ( PDOException $e ) {

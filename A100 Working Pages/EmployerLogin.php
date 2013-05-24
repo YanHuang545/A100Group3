@@ -27,10 +27,12 @@ echo "Connection failed: " . $e->getMessage();
 
 $sql = "SELECT * FROM Registered_Employers WHERE user_name= :user_id and password= :pass";
 
+$hashedpassword = md5($_POST["pass"]);
+
 try {
 $st = $conn->prepare( $sql );
 $st->bindValue( ":user_id", $_POST["user_id"], PDO::PARAM_STR );
-$st->bindValue( ":pass", $_POST["pass"], PDO::PARAM_STR );
+$st->bindValue( ":pass", $hashedpassword, PDO::PARAM_STR );
 $st->execute();
 $row=$st->fetch();
 if($row==null){
