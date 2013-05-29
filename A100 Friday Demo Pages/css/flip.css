@@ -1,0 +1,68 @@
+/* 
+ * 3D Card Flip Effect based off of work by Rich Bradshaw 
+ * http://css3.bradshawenterprises.com/flip/
+ * Modified and used for The Grid by Robert Rotaru
+ */
+
+#post_container {
+  position: relative;
+  z-index: 1;
+  height: auto;
+}
+#post_container {
+  -webkit-perspective: 1000px;
+  height: 200px;
+}
+#post_card {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 0.2s linear;
+}
+#post_container:hover #post_card {
+  -webkit-transform: rotateX(180deg);
+  -webkit-box-shadow: 5px -5px 5px #aaa;
+}
+
+#profile_container {
+  z-index: 1;
+  height: auto;
+}
+#profile_container {
+  -webkit-perspective: 1000px;
+}
+#profile_card {
+  width: 100%;
+  height: 88px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 0.2s linear;
+}
+#profile_container:hover #profile_card {
+  -webkit-transform: rotateY(180deg);
+  -webkit-box-shadow: -5px 5px 5px #aaa;
+}
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+}
+#profile_card .face.back {
+  -webkit-transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 0.5em;
+  color: white;
+  background-color: silver;
+  display: block;
+  height: 88px;
+  overflow: hidden;
+}
+#post_card .face.back {
+  -webkit-transform: rotateX(180deg);
+  box-sizing: border-box;
+  padding: 0.5em;
+  color: white;
+  background-color: silver;
+}
+
+
