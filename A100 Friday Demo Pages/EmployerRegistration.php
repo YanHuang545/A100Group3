@@ -102,49 +102,35 @@
       </div>
       <div class="col span_1_of_3">
 	
-	<h4>User Login</h4>
+	<h4>Employer Registration Complete</h4>
+	<p>Thank You for joining us.<p>
+
+    <dl>
+      <dt>Company Name:</dt><dd><?php echo $_POST["company_name"]?></dd>
+      <dt>Location:</dt><dd><?php echo $_POST["location"]?></dd>
+      <dt>Description:</dt><dd><?php echo $_POST["company_desc"]?></dd>
+	  <dt>User ID:</dt><dd><?php echo $_POST["user_id"]?></dd>
+	  <dt>Website:</dt><dd><?php echo $_POST["website_URL"]?></dd>
+    </dl>
+
 <?php
 
-$sql = "SELECT * FROM Employees WHERE UserName= :UserName and Password= :Password";
-$sql2 = "SELECT * FROM Employers WHERE UserName= :UserName and Password= :Password";
+$sql = "INSERT INTO Employers (CompanyName, Location, CompanyDesc, WebsiteURL, UserName, Password)
+VALUES(:CompanyName,:Location,:CompanyDesc, :WebsiteURL, :UserName, :Password)";
 
-$hashedpassword = md5($_POST["pass"]);
+$hashedpassword=md5($_POST["pass"]);
 
 try {
 $st = $conn->prepare( $sql );
-$st->bindValue( ":UserName", $_POST["user"], PDO::PARAM_STR );
+$st->bindValue( ":CompanyName", $_POST["company_name"], PDO::PARAM_STR );
+$st->bindValue( ":Location", $_POST["location"], PDO::PARAM_STR );
+$st->bindValue( ":CompanyDesc", $_POST["company_desc"], PDO::PARAM_STR );
+$st->bindValue( ":WebsiteURL", $_POST["website_URL"], PDO::PARAM_STR );
+$st->bindValue( ":UserName", $_POST["user_id"], PDO::PARAM_STR );
 $st->bindValue( ":Password", $hashedpassword, PDO::PARAM_STR );
 $st->execute();
-$row=$st->fetch();
 } catch ( PDOException $e ) {
 echo "Query failed: " . $e->getMessage();
-}
-
-if($row != null){
-echo "Welcome, ";
-echo $_POST["user"];
-}
-
-else{
-try {
-$st = $conn->prepare( $sql2 );
-$st->bindValue( ":UserName", $_POST["user"], PDO::PARAM_STR );
-$st->bindValue( ":Password", $hashedpassword, PDO::PARAM_STR );
-$st->execute();
-$row=$st->fetch();
-} catch ( PDOException $e ) {
-echo "Query failed: " . $e->getMessage();
-}
-
-if($row != null){
-echo "Welcome, ";
-echo $_POST["user"];
-}
-
-else{
-echo "The credentials you have provided do not match any in our database";
-}
-
 }
 
 ?>

@@ -146,3 +146,8 @@ input {
   width: 3em;
   vertical-align: top;
 }
+
+button.commonSized {
+    height: 55px;
+	width: 100%;
+}

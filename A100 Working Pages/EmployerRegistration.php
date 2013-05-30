@@ -19,6 +19,7 @@
       <dt>Location:</dt><dd><?php echo $_POST["location"]?></dd>
       <dt>Description:</dt><dd><?php echo $_POST["company_desc"]?></dd>
 	  <dt>User ID:</dt><dd><?php echo $_POST["user_id"]?></dd>
+	  <dt>Website:</dt><dd><?php echo $_POST["website_URL"]</dd>?></dd>
     </dl>
 
 <?php
@@ -37,20 +38,20 @@ echo "Connection failed: " . $e->getMessage();
 }
 
 
-$sql = "INSERT INTO Registered_Employers (company_name, location, company_desc, user_name, password)
-VALUES(:company_name,:location,:company_desc, :user_name, :password)";
+$sql = "INSERT INTO Employers (CompanyName, Location, CompanyDesc, WebsiteURL, UserName, Password)
+VALUES(:CompanyName,:Location,:CompanyDesc, :WebsiteURL, :UserName, :Password)";
 
 $hashedpassword = md5($_POST["pass"]); //This would eventually be changed to a more appropriate hashing algorithm and use salt
 
 try {
 $st = $conn->prepare( $sql );
-$st->bindValue( ":company_name", $_POST["company_name"], PDO::PARAM_STR );
-$st->bindValue( ":location", $_POST["location"], PDO::PARAM_STR );
-$st->bindValue( ":company_desc", $_POST["company_desc"], PDO::PARAM_STR );
-$st->bindValue( ":user_name", $_POST["user_id"], PDO::PARAM_STR );
-$st->bindValue( ":password", $hashedpassword, PDO::PARAM_STR );
+$st->bindValue( ":CompanyName", $_POST["company_name"], PDO::PARAM_STR );
+$st->bindValue( ":Location", $_POST["location"], PDO::PARAM_STR );
+$st->bindValue( ":CompanyDesc", $_POST["company_desc"], PDO::PARAM_STR );
+$st->bindValue( ":WebsiteURL", $_POST["website_URL"], PDO::PARAM_STR );
+$st->bindValue( ":UserName", $_POST["user_id"], PDO::PARAM_STR );
+$st->bindValue( ":Password", $hashedpassword, PDO::PARAM_STR );
 $st->execute();
-echo "query success";
 } catch ( PDOException $e ) {
 echo "Query failed: " . $e->getMessage();
 }
