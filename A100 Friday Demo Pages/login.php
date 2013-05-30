@@ -20,7 +20,7 @@
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>The Grid</title>
+	<title>Example of the Responsive Grid System</title>
 	<meta name="description" content="This is the Responsive Grid System, a quick, easy and flexible way to create a responsive web site.">
 	<meta name="keywords" content="responsive, grid, system, web design">
 
@@ -79,16 +79,16 @@
 
       <div id="nav" class="section group">
         <div class="col span_1_of_6">
-          <a href="dummyval">About</a>
+          <a href="sdfsdf">About</a>
         </div>
         <div class="col span_1_of_6">
-          <a href="dummyval">Community</a>
+          <a href="">Community</a>
         </div>
         <div class="col span_1_of_6">
           <a href="jobslisting.php">Opportunities</a>
         </div>
         <div class="col span_1_of_6">
-          <a href="dummyval">Experts</a>
+          <a href="">Experts</a>
         </div>
         <div id="search" class="col span_2_of_6">
           <form method="post" action="search.php">
@@ -97,42 +97,40 @@
         </div>
       </div>
 
-    	<div class="section group">
-        <div id="desc" class="section group">
-          <div class="col span_1_of_3">
-		  	    <h3>Recent Posts</h3>
-          </div>
-          <div class="col span_1_of_6">
-            <h3>Profiles</h3>
-          </div>
-          <div class="col span_3_of_6" style="margin-bottom:0;">
-            <form id="login" action="login.php" method="post">
-              <label for="user">User:</label>
-              <input type="text" name="user">
-
-              <label for="pass">Pass:</label>
-              <input type="password" name="pass">
-			  
-			  <input type="submit" name="submit" value="Submit"/>
-			  
-              <a href="register.html">Register?</a>
-            </form>
-          </div>
-        </div>
-			</div>
-      <div class="section group">
-				<div class="col span_1_of_3">
-          <?php require_once("return-posts.php"); ?>
-        </div>
-        <div class="col span_2_of_3">
-          <?php require_once("return-promoted.php"); ?>
-          <?php require_once("return-users.php"); ?>
-        </div>
+    <div class="section group">
+      <div class="col span_1_of_3">
       </div>
+      <div class="col span_1_of_3">
+	
+	<h4>User Login</h4>
+<?php
 
+$sql = "SELECT * FROM Employees WHERE UserName= :UserName and Password= :Password";
 
-		</div>
-	</div>
+$hashedpassword = md5($_POST["pass"]);
+
+try {
+$st = $conn->prepare( $sql );
+$st->bindValue( ":UserName", $_POST["user"], PDO::PARAM_STR );
+$st->bindValue( ":Password", $hashedpassword, PDO::PARAM_STR );
+$st->execute();
+$row=$st->fetch();
+if($row==null){
+echo "We're sorry but your login credentials are not in our database";
+}
+else{
+echo "Welcome to The Grid,  ";
+echo $_POST["user"];
+}
+} catch ( PDOException $e ) {
+echo "Query failed: " . $e->getMessage();
+}
+
+?>
+         </div>
+      </div>
+    </div>
+  </div>
 	<div id="footercontainer">
 		<footer class="group">
 			<div class="col span_1_of_4">
@@ -187,4 +185,3 @@
 
 </body>
 </html>
-
