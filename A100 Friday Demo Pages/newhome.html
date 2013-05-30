@@ -113,7 +113,7 @@
               <label for="pass">Pass:</label>
               <input type="password" name="pass">
 			  
-			  <input type="submit" name="submit" value="Submit"/>
+			        <input type="submit" name="submit" value="Submit"/>
 			  
               <a href="register.html">Register?</a>
             </form>
@@ -175,6 +175,17 @@
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+  <script> // Resizes the profile boxes to keep the 1:1 ratio. Should be moved to a resize.js file.
+    $(window).ready(sizeProfile);
+    $(window).resize(sizeProfile);
+    
+    function sizeProfile() {
+      var div = $('.profile');
+      var width = div.width();
+
+      div.css('height', width);
+    };
+  </script>
 
 	<!--[if (lt IE 9) & (!IEMobile)]>
 	<script src="js/selectivizr-min.js"></script>
