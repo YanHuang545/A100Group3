@@ -5,6 +5,10 @@
   $sql_posts_search = "SELECT * FROM posts WHERE title LIKE '%".$search_term."%' OR blurb LIKE '%".$search_term."%' OR content LIKE '%".$search_term."%' OR post_date LIKE '%".$search_term."%'";
   try {
     $rows = $conn->query($sql_posts_search);
+    $count = $rows->rowCount();
+    if ($count == 0) {
+      echo "<p>No matching profiles found.</p>";
+    }
     foreach($rows as $row) {
       echo "<div id='search-post'>
                   <img id='post-image' src='" . $row["image_link"] . "' width='150' height='150'/>

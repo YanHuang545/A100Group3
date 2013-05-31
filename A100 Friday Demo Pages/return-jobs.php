@@ -13,7 +13,7 @@
                 <div class='col span_1_of_3'>
                   <div id='jobs_container'>
                    <div id='jobs_card'>
-                     <img id='jobs-image' src='images/default_user.png' width='150' height='150'/>
+                     <img id='jobs-image' src='".$row["image_link"]."' width='150' height='150'/>
                     <h3 class='jobs title'><a href='viewjob.php?id=" . $row["id"] . "'>" . $row["title"] . "</a></h3>
                     <p>" . $row["company"] . ", " . $row["location"] . "
                     <br>Posted " . date("F d Y", $row["post_date"]) . "</p>
@@ -28,7 +28,7 @@
         echo "<div class='col span_1_of_3'>
                 <div id='jobs_container'>
                   <div id='jobs_card'>
-                    <img id='jobs-image' src='images/default_user.png' width='150' height='150'/>
+                    <img id='jobs-image' src='".$row["image_link"]."' width='150' height='150'/>
                     <h3 class='jobs title'><a href='viewjob.php?id=" . $row["id"] . "'>" . $row["title"] . "</a></h3>
                     <p>" . $row["company"] . ", " . $row["location"] . "
                     <br>Posted " . date("F d Y", $row["post_date"]) . "</p>
@@ -43,7 +43,7 @@
         echo "<div class='col span_1_of_3'>
                 <div id='jobs_container'>
                   <div id='jobs_card'>
-                    <img id='jobs-image' src='images/default_user.png' width='150' height='150'/>
+                    <img id='jobs-image' src='".$row["image_link"]."' width='150' height='150'/>
                     <h3 class='jobs title'><a href='viewjob.php?id=" . $row["id"] . "'>" . $row["title"] . "</a></h3>
                     <p>" . $row["company"] . ", " . $row["location"] . "
                     <br>Posted " . date("F d Y", $row["post_date"]) . "</p>

@@ -1,4 +1,4 @@
-<!--PHP Script for returning recent user data to main page-->
+<!--PHP Script for returning promoted content to main page-->
 <!--By Robert Rotaru-->
 
 <?php
