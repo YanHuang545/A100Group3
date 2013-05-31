@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 
+<!--Employeer Registration page done by John-->
+
+
 <!--The Grid: Whiteboard Redesign by Robert Rotaru-->
 <!--Based off of ResponsiveGridSystem by Graham Miller-->
 <!--http://www.responsivegridsystem.com/-->
