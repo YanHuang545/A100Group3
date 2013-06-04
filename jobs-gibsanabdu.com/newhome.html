@@ -1,0 +1,61 @@
+<?php require_once("header.php"); ?>
+
+
+
+    
+    
+      
+      <div class="section group">
+        <div id="desc" class="section group">
+          <div class="col span_1_of_3">
+		  	    <h3>Recent Posts</h3>
+          </div>
+          <div class="col span_1_of_3">
+            <h3>Profiles</h3>
+          </div>
+          <div class="col span_1_of_5" style="margin-bottom:0;">
+            <h3><a href="#" id="button" style="float: right;">Login</a></h3>
+            <div id="login_modal">
+              <div id="login_heading">
+                <h4>Please enter your username and password to login.</h4>
+              </div>
+              <div id="login_content">
+                <form id="login" action="login.php" method="post">
+                  <input type="text" name="user" placeholder="Username" />
+                  <input type="password" name="pass" placeholder="Password" />
+                  <input id="login_button" type="submit" value="Login" />
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col span_1_of_8" style="margin-bottom:0;">
+            <h3><a href="register.html" style="float: right;">Register</a></h3>
+          </div>
+        </div>
+			</div>
+      <div class="section group">
+				<div class="col span_1_of_3">
+          <?php require_once("return-posts.php"); ?>
+          <h4>The Grove</h4>
+          <iframe width="390" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=760+Chapel+St,+New+Haven,+CT&amp;aq=0&amp;oq=76&amp;sll=41.467428,-71.636353&amp;sspn=1.455047,3.348083&amp;ie=UTF8&amp;hq=&amp;hnear=760+Chapel+St,+New+Haven,+Connecticut+06510&amp;t=m&amp;z=14&amp;ll=41.304616,-72.923485&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=760+Chapel+St,+New+Haven,+CT&amp;aq=0&amp;oq=76&amp;sll=41.467428,-71.636353&amp;sspn=1.455047,3.348083&amp;ie=UTF8&amp;hq=&amp;hnear=760+Chapel+St,+New+Haven,+Connecticut+06510&amp;t=m&amp;z=14&amp;ll=41.304616,-72.923485" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+        </div>
+        <div class="col span_2_of_3">
+          <?php require_once("return-promoted.php"); ?>
+          <?php require_once("return-users.php"); ?>
+            
+          
+            
+            <div class="fb-like" data-href="http://www.gibsanabdu.com/jobs/newhome.html" data-send="true" data-width="450" data-show-faces="true"></div>
+        
+           <div class="fb-comments" data-href="http://www.gibsanabdu.com/jobs/newhome.html" data-width="470" data-num-posts="10"></div>  
+           
+                
+        
+        </div>
+        
+        
+       
+      
+      </div>
+
+<?php require_once("footer.php"); ?>
