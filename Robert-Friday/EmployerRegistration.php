@@ -18,23 +18,44 @@
 
 <?php
 
-$sql = "INSERT INTO Employers (CompanyName, Location, CompanyDesc, WebsiteURL, UserName, Password)
-VALUES(:CompanyName,:Location,:CompanyDesc, :WebsiteURL, :UserName, :Password)";
+$sql = "INSERT INTO company (companyID, companyName, location, companyDesc, userID)
+VALUES(:companyID, :companyName,:location,:companyDesc, :userID)";
+
+$sql2 = "INSERT INTO users (id, username, password, websiteURL) VALUES (:id, :username, :password, :websiteURL)";
 
 $hashedpassword=md5($_POST["pass"]);
+$userID=md5(uniqid());
+$companyID=md5(uniqid());
+echo uniqid() + " ";
+echo $userID + " ";
+echo $companyID;
 
 try {
-$st = $conn->prepare( $sql );
-$st->bindValue( ":CompanyName", $_POST["company_name"], PDO::PARAM_STR );
-$st->bindValue( ":Location", $_POST["location"], PDO::PARAM_STR );
-$st->bindValue( ":CompanyDesc", $_POST["company_desc"], PDO::PARAM_STR );
-$st->bindValue( ":WebsiteURL", $_POST["website_URL"], PDO::PARAM_STR );
-$st->bindValue( ":UserName", $_POST["user_id"], PDO::PARAM_STR );
-$st->bindValue( ":Password", $hashedpassword, PDO::PARAM_STR );
+$st = $conn->prepare( $sql2 );
+$st->bindValue( ":id", $userID, PDO::PARAM_STR );
+$st->bindValue( ":username", $_POST["user_id"], PDO::PARAM_STR );
+$st->bindValue( ":password", $hashedpassword, PDO::PARAM_STR );
+$st->bindValue( ":websiteURL", $_POST["website_URL"], PDO::PARAM_STR );
 $st->execute();
+echo "query success \n";
 } catch ( PDOException $e ) {
 echo "Query failed: " . $e->getMessage();
 }
+
+try {
+$st = $conn->prepare( $sql );
+$st->bindValue( ":companyName", $_POST["company_name"], PDO::PARAM_STR );
+$st->bindValue( ":location", $_POST["location"], PDO::PARAM_STR );
+$st->bindValue( ":companyDesc", $_POST["company_desc"], PDO::PARAM_STR );
+$st->bindValue( ":companyID", $companyID, PDO::PARAM_STR );
+$st->bindValue( ":userID", $userID, PDO::PARAM_STR );
+$st->execute();
+echo "query success \n";
+} catch ( PDOException $e ) {
+echo "Query failed: " . $e->getMessage();
+}
+
+
 
 ?>
          </div>

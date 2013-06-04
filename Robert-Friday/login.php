@@ -12,11 +12,11 @@
 
 $username = $_POST["user"];
 $hashedpassword = md5($_POST["pass"]);
-$sql = "SELECT * FROM users WHERE user_name='".$username."' and password='".$hashedpassword."'";
+$sql = "SELECT * FROM users WHERE username='".$username."' and password='".$hashedpassword."'";
 
 try {
 $st = $conn->prepare( $sql );
-$st->bindValue( ":user_name", $_POST["user"], PDO::PARAM_STR );
+$st->bindValue( ":username", $_POST["user"], PDO::PARAM_STR );
 $st->bindValue( ":password", $hashedpassword, PDO::PARAM_STR );
 $st->execute();
 $row=$st->fetch();
@@ -28,6 +28,11 @@ if($row != null){
 echo "Welcome, ";
 echo $_POST["user"];
 }
+
+else{
+echo "We're sorry, but these credentials are not in our database";
+}
+
 /*
 else{
 try {
